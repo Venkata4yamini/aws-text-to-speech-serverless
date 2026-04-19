@@ -1,10 +1,10 @@
-**Project Overview**
+**Project Overview**:
 This project implements a serverless Text-to-Speech pipeline using AWS services. 
 Whenever a text file is uploaded to an S3 bucket, an AWS Lambda function is automatically triggered. 
 The Lambda function reads the text file, converts the content into speech using Amazon Polly, 
 and stores the generated audio file into a destination S3 bucket.
 
-**Architecture Components**
+**Architecture Components**:
 1.AWS Lambda — Serverless compute service to process files.
 2.Amazon S3 (Source Bucket) — Stores uploaded text files.
 3.Amazon Polly — Converts text to speech.
