@@ -2,15 +2,15 @@
 
 This guide explains how to deploy and run the Serverless Text-to-Speech project using AWS services.
 
-** Prerequisites**
+**Prerequisites**
 
 Before starting, make sure you have:
 
-*AWS Account
-*IAM permissions to create Lambda, S3, and Polly resources
-*Python 3.10+
-*Git installed
-*AWS Console access
+1.AWS Account
+2IAM permissions to create Lambda, S3, and Polly resources
+3.Python 3.10+
+4.Git installed
+5.AWS Console access
 
 **🪣 Step 1 — Create S3 Buckets**
 
