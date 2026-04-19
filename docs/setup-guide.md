@@ -1,142 +1,168 @@
-⚙️ Setup Guide — AWS Text-to-Speech Serverless
+# ⚙️ Setup Guide — AWS Text-to-Speech Serverless
 
-This guide explains how to deploy and run the Serverless Text-to-Speech project using AWS services.
+This guide explains how to deploy and run the **Serverless Text-to-Speech** project using AWS services.
 
-**Prerequisites**
+---
 
-Before starting, make sure you have:
+## 📋 Prerequisites
 
-1.AWS Account
-2IAM permissions to create Lambda, S3, and Polly resources
-3.Python 3.10+
-4.Git installed
-5.AWS Console access
+Before starting, ensure you have:
 
-**🪣 Step 1 — Create S3 Buckets**
+- AWS Account
+- IAM permissions to create Lambda, S3, and Polly resources
+- Python 3.10+
+- Git installed
+- AWS Management Console access
 
-Create two S3 buckets:
+---
 
-Source Bucket
+## 🪣 Step 1 — Create S3 Buckets
 
+Create **two S3 buckets**.
+
+### Source Bucket
 Stores uploaded text files.
 
 Example:
-
 source-polly-audio-bucket
-Destination Bucket
 
+### Destination Bucket
 Stores generated audio files.
 
 Example:
-
 destination-polly-audio-bucket
 
-**🔐 Step 2 — Create IAM Role**
+---
 
-Create an IAM Role for Lambda with the following permissions:
+## 🔐 Step 2 — Create IAM Role
 
-S3 Permissions
-s3
-s3
-s3
-Polly Permission
-polly
+Create an IAM Role for Lambda execution.
 
-Attach policy to Lambda execution role.
+### Required Permissions
 
-**⚡ Step 3 — Create Lambda Function**
+#### S3 Permissions
+- s3:GetObject
+- s3:PutObject
+- s3:ListBucket
 
-Open AWS Lambda Console
-Click Create Function
-Runtime → Python 3.10
-Attach created IAM Role
+#### Amazon Polly Permission
+- polly:SynthesizeSpeech
 
-Function name:
+Attach this IAM Role to the Lambda function.
 
+---
+
+## ⚡ Step 3 — Create Lambda Function
+
+1. Open AWS Lambda Console
+2. Click **Create Function**
+3. Select **Author from scratch**
+4. Runtime → Python 3.10
+5. Attach created IAM Role
+
+Function Name:
 TextToSpeechFunction
 
-**🌎 Step 4 — Add Environment Variables**
+---
+
+## 🌎 Step 4 — Add Environment Variables
 
 Go to:
 
 Lambda → Configuration → Environment Variables
 
-Add:
+Add the following variables:
 
-Key	Value
-SOURCE_BUCKET	source-polly-audio-bucket
-DESTINATION_BUCKET	destination-polly-audio-bucket
-VOICE_ID	Joanna
-OUTPUT_FORMAT	mp3
+| Key | Value |
+|-----|------|
+| SOURCE_BUCKET | source-polly-audio-bucket |
+| DESTINATION_BUCKET | destination-polly-audio-bucket |
+| VOICE_ID | Joanna |
+| OUTPUT_FORMAT | mp3 |
 
-**🔔 Step 5 — Configure S3 Trigger**
+---
 
-Open Lambda
-Add Trigger
-Select S3
-Choose Source Bucket
-Event Type → Object Created (All)
+## 🔔 Step 5 — Configure S3 Trigger
 
-Now Lambda triggers automatically when a text file is uploaded.
+1. Open Lambda Function
+2. Click **Add Trigger**
+3. Select **S3**
+4. Choose Source Bucket
+5. Event Type → Object Created (All)
 
-**📂 Step 6 — Upload Text File**
+Lambda will now automatically trigger when a text file is uploaded.
 
-Upload a .txt file into source bucket.
+---
+
+## 📂 Step 6 — Upload Text File
+
+Upload a `.txt` file into the source bucket.
 
 Example:
-
 oracle.txt
 
-**🔊 Step 7 — Verify Output
-**
-After upload:
+---
 
-Destination bucket will contain:
+## 🔊 Step 7 — Verify Output
 
+After upload, check the destination bucket.
+
+Expected Output:
 oracle.mp3
 
-Audio generated using Amazon Polly.
+Audio file generated using Amazon Polly.
 
-**📊 Architecture Flow**
-User Upload
-      ↓
-Amazon S3 (Source Bucket)
-      ↓
-AWS Lambda Trigger
-      ↓
-Amazon Polly Text-to-Speech
-      ↓
+---
+
+## 📊 Architecture Flow
+
+User Upload  
+↓  
+Amazon S3 (Source Bucket)  
+↓  
+AWS Lambda Trigger  
+↓  
+Amazon Polly Text-to-Speech  
+↓  
 Amazon S3 (Destination Bucket)
 
-**🧪 Testing**
+---
 
-Upload sample file:
+## 🧪 Testing
+
+Upload sample text file:
 
 Hello this is AWS Serverless Text to Speech Project.
 
-Verify audio generation.
+Verify that the audio file is generated successfully.
 
-**🛠 Troubleshooting**
-AccessDenied Error
+---
 
-Check IAM role permissions.
+## 🛠 Troubleshooting
 
-Lambda Not Triggering
+### AccessDenied Error
+- Verify IAM Role permissions
+- Ensure S3 and Polly permissions are attached
 
-Verify S3 event notification configuration.
+### Lambda Not Triggering
+- Check S3 Event Notification configuration
 
-No Audio Output
+### No Audio Output
+- Review CloudWatch Logs
 
-Check CloudWatch Logs.
+---
 
-**🚀 Future Improvements**
-API Gateway integration
-Batch processing
-Multi-language voice support
-Queue-based scalable processing
-Web upload interface
+## 🚀 Future Improvements
 
-**👩‍💻 Author**
-Venkata Yamini
+- API Gateway integration
+- Batch processing
+- Multi-language voice support
+- Queue-based scalable processing using SQS
+- Web upload interface
 
+---
+
+## 👩‍💻 Author
+
+Venkata Yamini  
 Cloud Security & Serverless Developer
