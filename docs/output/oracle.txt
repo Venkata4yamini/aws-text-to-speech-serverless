@@ -1,0 +1,42 @@
+INTRODUCTION:
+DIFFRENCE BETWEEN DATA AND DATABASE:
+While data is about the particular student and database is of all students in the college.
+database is of large amount of data in the form of a table
+PROBLEMS ASSOCIATED IN MANAGING DATA OR DATABASE IN LEDGERS:
+security challenges
+backup issues
+space issues
+human resource issue
+costly
+inefficiently in retieving facts
+DBMS:iot is a software which is used to (manage)store data permanently and retrieve the large amount of data efficiently
+ eg:oracle,Mysql,DB2.Informix...
+HOW TO STORE THE DATA FROM LEDGER BOOK TO HARDDISK:
+create the table
+the field of the ledger should be the column of a table
+give a name of the table
+insert the data inside the table
+DIFFERENCE BETWEEN ORACLE AND DBMS:
+The language which is used to communicate with the database
+HOW TO CREATE A TABLE:
+1.How to insert data into DBMS by creating the table
+  CREATE TABLE Student
+(
+ID number(10),
+Name varchar2(30),
+Age number,
+Gender varchar2(6),
+Marks number,
+SEM number
+);
+CREATE TABLE is a keyword ,Student is name of the table
+INSERT INTO Student VALUES(52,'aman',26,'Male',98,8);
+INSERT INTO Student VALUES(53,'mohan',27,'Male',94,8);
+or 
+INSERT	TABLE STUDENTS(ID,NAME,GENDER,MARKS,SEM)VALUES(54,ABHIRAM,22,MALE,85,7)
+
+
+
+
+
+
