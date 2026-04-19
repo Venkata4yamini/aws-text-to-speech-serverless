@@ -1,0 +1,18 @@
+permanently deleteTEST FILE
+
+This is a random test file created to check whether
+the text file is working correctly or not.
+
+Date: 14 April 2026
+Purpose: Testing file creation and reading.
+
+Sample Text:
+Hello World!
+This is a sample text file.
+If you can read this text, the file is working successfully.
+
+Line 1: Testing
+Line 2: Checking
+Line 3: Working Fine
+
+End of File.
